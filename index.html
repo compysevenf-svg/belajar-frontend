@@ -5,6 +5,8 @@
 
 <title> Fadil | Web3 Builder</title>
 
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
 <style>
 
 #projects{
@@ -25,6 +27,10 @@ transition:0.3s;
 .project:hover{
 transform:translateY(-5px);
 box-shadow:0 0 30px #00ffcc55;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 
@@ -127,6 +133,28 @@ padding:20px;
 color:#94a3b8;
 }
 
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+max-width:900px;
+margin:40px auto;
+}
+
+.project{
+background:#0f172a;
+padding:25px;
+border-radius:12px;
+transition:0.3s;
+box-shadow:0 0 20px #00ffcc22;
+}
+
+.project:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px #00ffcc66;
+}
+
+
 </style>
 
 </head>
@@ -157,7 +185,32 @@ color:#94a3b8;
 
 </section>
 
-<section class="cards">
+<section class="cards" data-aos="fade-up">
+
+<section id="projects" data-aos="fade-up">
+
+<h2>Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project">
+<h3>Crypto Dashboard</h3>
+<p>Web3 dashboard UI using HTML CSS JS</p>
+</div>
+
+<div class="project">
+<h3>NFT Landing Page</h3>
+<p>Modern landing page for NFT startup</p>
+</div>
+
+<div class="project">
+<h3>Portfolio Website</h3>
+<p>Developer portfolio with animations</p>
+</div>
+
+</div>
+
+</section>
 
 <div class="card">
 <h3>HTML</h3>
@@ -264,6 +317,14 @@ particlesJS("particles-js", {
     color: { value: "#00ffcc" },
     line_linked: { enable: false }
   }
+});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({
+duration:1000,
+once:true
 });
 </script>
 
