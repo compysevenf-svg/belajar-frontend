@@ -9,6 +9,59 @@
 
 <style>
 
+.hero h1 span{
+
+animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px #00ffcc;
+}
+
+to{
+text-shadow:0 0 30px #00ffcc,0 0 60px #00ffcc;
+}
+
+}
+
+.trail{
+position:fixed;
+width:6px;
+height:6px;
+background:#00ffcc;
+border-radius:50%;
+pointer-events:none;
+box-shadow:0 0 10px #00ffcc;
+}
+
+.terminal-box{
+background:#020617;
+border:1px solid #00ffcc;
+padding:20px;
+margin:60px auto;
+max-width:600px;
+font-family:monospace;
+box-shadow:0 0 20px #00ffcc44;
+}
+
+.terminal-output{
+min-height:120px;
+margin-bottom:10px;
+}
+
+#terminal-input{
+width:100%;
+background:black;
+border:none;
+color:#00ffcc;
+font-family:monospace;
+font-size:16px;
+outline:none;
+}
+
 .card,.project{
 
 transition:0.4s;
@@ -687,6 +740,81 @@ setTimeout(typeTerminal,300);
 }
 
 typeTerminal();
+
+</script>
+
+<div class="terminal-box">
+
+<div class="terminal-output" id="output">
+Welcome to Fadil Terminal
+Type: help
+</div>
+
+<input type="text" id="terminal-input" placeholder="type command...">
+
+</div>
+
+<script>
+
+const input = document.getElementById("terminal-input");
+const output = document.getElementById("output");
+
+input.addEventListener("keydown",function(e){
+
+if(e.key === "Enter"){
+
+let cmd = input.value;
+
+output.innerHTML += "<br>> " + cmd;
+
+if(cmd === "help"){
+output.innerHTML += "<br>commands: about, skills, github";
+}
+
+else if(cmd === "about"){
+output.innerHTML += "<br>Front End Developer | Web3 Builder";
+}
+
+else if(cmd === "skills"){
+output.innerHTML += "<br>HTML CSS JavaScript";
+}
+
+else if(cmd === "github"){
+output.innerHTML += "<br>github.com/username";
+}
+
+else{
+output.innerHTML += "<br>command not found";
+}
+
+input.value="";
+
+}
+
+});
+
+</script>
+
+<script>
+
+document.addEventListener("mousemove",e=>{
+
+let trail = document.createElement("div");
+
+trail.className="trail";
+
+trail.style.left=e.pageX+"px";
+trail.style.top=e.pageY+"px";
+
+document.body.appendChild(trail);
+
+setTimeout(()=>{
+
+trail.remove();
+
+},200);
+
+});
 
 </script>
 
