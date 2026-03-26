@@ -9,6 +9,43 @@
 
 <style>
 
+.hero h1 span{
+
+color:#00ffcc;
+
+animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px #00ffcc;
+}
+
+to{
+text-shadow:0 0 30px #00ffcc,0 0 60px #00ffcc;
+}
+
+}
+
+.project{
+
+background:#0f172a;
+padding:20px;
+border-radius:12px;
+box-shadow:0 0 15px #00ffcc22;
+transition:all .4s ease;
+
+}
+
+.project:hover{
+
+transform:translateY(-10px) scale(1.04);
+box-shadow:0 0 40px #00ffcc66;
+
+}
+
 nav{
 position:sticky;
 top:0;
@@ -182,7 +219,7 @@ color:#888;
 
 <h1>Hello I'm <span>Fadil</span> 🚀</h1>
 
-<p>Front End Developer | Web3 Enthusiast</p>
+<p id="typing"></p>
 
 <a class="btn" href="#projects">View Portfolio</a>
 
@@ -264,7 +301,11 @@ I'm Fadil, a Front End Developer focused on building modern web interfaces and e
 
 <footer>
 
-© 2026 Fadil Irfandi
+<p>© 2026 Fadil Irfandi</p>
+
+<p>
+<a href="https://github.com/Fadil">GitHub</a>
+</p>
 
 </footer>
 
@@ -336,6 +377,44 @@ div.innerHTML=`
 `;
 
 container.appendChild(div);
+
+});
+
+});
+
+</script>
+
+<script>
+
+const text = "Front End Developer | Web3 Builder | Open Source Learner";
+let i = 0;
+
+function type(){
+
+if(i < text.length){
+
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+
+setTimeout(type,40);
+
+}
+
+}
+
+type();
+
+</script>
+
+<script>
+
+const bars=document.querySelectorAll(".progress-bar");
+
+window.addEventListener("scroll",()=>{
+
+bars.forEach(bar=>{
+
+bar.style.width = bar.dataset.width;
 
 });
 
