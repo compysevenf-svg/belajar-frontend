@@ -9,6 +9,30 @@
 
 <style>
 
+.card,.project{
+
+transition:0.4s;
+cursor:pointer;
+
+}
+
+.card:hover,.project:hover{
+
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 0 40px #00ffcc88;
+
+}
+
+#matrix{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+background:black;
+}
+
 #terminal{
 position:fixed;
 top:0;
@@ -328,11 +352,11 @@ color:#94a3b8;
 
 <body>
 
+<canvas id="matrix"></canvas>
+
 <div id="terminal">
 
-<p>> loading fadil.dev...</p>
-<p>> initializing portfolio...</p>
-<p>> welcome developer</p>
+<p id="terminal-text"></p>
 
 </div>
 
@@ -577,6 +601,94 @@ glow.style.top = e.clientY + "px";
 </script>
 
 <div class="glow"></div>
+
+<script>
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+drops[x] = 1;
+}
+
+function draw(){
+
+ctx.fillStyle = "rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ffcc";
+ctx.font = fontSize + "px monospace";
+
+for(let i = 0; i < drops.length; i++){
+
+const text = letters.charAt(Math.floor(Math.random()*letters.length));
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+drops[i] = 0;
+}
+
+drops[i]++;
+}
+
+}
+
+setInterval(draw,33);
+
+</script>
+
+<script>
+
+const terminalLines = [
+"> loading fadil.dev...",
+"> initializing portfolio...",
+"> connecting to web3...",
+"> welcome developer"
+];
+
+let line = 0;
+let char = 0;
+
+function typeTerminal(){
+
+if(line < terminalLines.length){
+
+const element = document.getElementById("terminal-text");
+
+if(char < terminalLines[line].length){
+
+element.innerHTML += terminalLines[line].charAt(char);
+char++;
+
+setTimeout(typeTerminal,40);
+
+}else{
+
+element.innerHTML += "<br>";
+line++;
+char = 0;
+
+setTimeout(typeTerminal,300);
+
+}
+
+}
+
+}
+
+typeTerminal();
+
+</script>
 
 </body>
 
