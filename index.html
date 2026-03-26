@@ -90,6 +90,13 @@ justify-content:space-between;
 padding:20px 40px;
 }
 
+nav{
+position:sticky;
+top:0;
+background:black;
+z-index:1000;
+}
+
 nav h2{
 color:#00ff88;
 text-shadow:0 0 10px #00ff88;
@@ -113,6 +120,15 @@ font-size:60px;
 .hero span{
 color:#00ff88;
 text-shadow:0 0 20px #00ff88;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
 }
 
 .typing{
@@ -219,6 +235,11 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 max-width:900px;
 margin:auto;
+}
+
+.project:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 40px #00ffcc66;
 }
 
 #about{
@@ -338,6 +359,18 @@ color:#94a3b8;
 I'm Fadil, a Front End Developer focused on building modern
 web interfaces and exploring Web3 technologies.
 </p>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>Email: fadil@email.com</p>
+
+<p>Twitter: @fadildev</p>
+
+<p>GitHub: github.com/username</p>
 
 </section>
 
