@@ -852,41 +852,7 @@ trail.remove();
 
 </script>
 
-<script>
 
-const hackLines = [
-"initializing system...",
-"connecting to blockchain...",
-"loading portfolio...",
-"decrypting developer data...",
-"access granted"
-];
-
-let i = 0;
-
-function hack(){
-
-if(i < hackLines.length){
-
-document.getElementById("hack-text").innerHTML += hackLines[i] + "<br>";
-
-i++;
-
-setTimeout(hack,700);
-
-}else{
-
-setTimeout(()=>{
-document.getElementById("hacking").style.display="none";
-},1000);
-
-}
-
-}
-
-hack();
-
-</script>
 
 <script>
 
