@@ -9,6 +9,42 @@
 
 <style>
 
+nav{
+position:sticky;
+top:0;
+background:black;
+z-index:1000;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+#github-projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:40px;
+}
+
+.repo{
+background:#0f172a;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 20px #00ffcc22;
+transition:0.3s;
+}
+
+.repo:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px #00ffcc55;
+}
+
+.repo a{
+color:#00ffcc;
+text-decoration:none;
+}
+
 body{
 margin:0;
 font-family:monospace;
@@ -158,6 +194,8 @@ color:#888;
 
 <div class="projects-grid">
 
+<div id="github-projects"></div>
+
 <div class="project">
 <h3>Crypto Dashboard</h3>
 <p>Web3 dashboard UI using HTML CSS JS</p>
@@ -214,6 +252,16 @@ I'm Fadil, a Front End Developer focused on building modern web interfaces and e
 
 </section>
 
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>Email: dilongkoko@email.com</p>
+<p>GitHub: github.com/Fadil</p>
+<p>Twitter: @DeFistrategist</p>
+
+</section>
+
 <footer>
 
 © 2026 Fadil Irfandi
@@ -265,6 +313,33 @@ requestAnimationFrame(animate);
 }
 
 animate();
+
+</script>
+
+<script>
+
+fetch("https://api.github.com/users/Fadil_GITHUB/repos")
+.then(res=>res.json())
+.then(data=>{
+
+const container=document.getElementById("github-projects");
+
+data.slice(0,6).forEach(repo=>{
+
+const div=document.createElement("div");
+div.className="repo";
+
+div.innerHTML=`
+<h3>${repo.name}</h3>
+<p>${repo.description || "No description"}</p>
+<a href="${repo.html_url}" target="_blank">View Repo</a>
+`;
+
+container.appendChild(div);
+
+});
+
+});
 
 </script>
 
